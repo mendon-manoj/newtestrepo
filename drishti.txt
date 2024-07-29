@@ -1,0 +1,41 @@
+-24/07/2024
+-image processing, code below is good code, (https://stackoverflow.com/questions/72851122/how-to-compare-how-similar-two-images-are-in-python)
+-install pip opencv package
+def compareImg(imgWarpColor):
+    img = cv2.imread("data.jpg")
+    img = cv2.resize(img, (660, 880))
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img = cv2.GaussianBlur(img, (3, 3), 0)
+    cv2.imwrite("datagray.jpg", img)
+
+    grayImgWarped = cv2.cvtColor(imgWarpColor, cv2.COLOR_BGR2GRAY)
+    blurImg = cv2.GaussianBlur(grayImgWarped, (3, 3), 0)
+    cv2.imwrite("blurredImage.jpg", blurImg)
+
+    hash0 = imagehash.average_hash(Image.open('blurredImage.jpg'))
+    hash1 = imagehash.average_hash(Image.open('datagray.jpeg'))
+    cutoff = 5
+
+    hashDiff = hash0 - hash1
+    print(hashDiff)
+    if hashDiff < cutoff:
+        print('These images are similar!')
+
+    filepath = 'C:\Users\MY NAME\PycharmProjects\projectInQuestion'
+    
+    os.remove(filepath, 'blurredImage.jpg')
+    os.remove(filepath, 'datagray.jpg')
+	
+-it contains improvement
+def compareImages(cv2Img):
+    # Convert cv2Img from OpenCV format to PIL format
+    pilImg = cv2.cvtColor(cv2Img, cv2.COLOR_BGR2RGB)
+    
+    # Get the average hashes of both images
+    hash0 = imagehash.average_hash(pilImg)
+    hash1 = imagehash.average_hash(Image.open('toBeCompared.jpeg'))
+    cutoff = 5  # Can be changed according to what works best for your images
+    
+    hashDiff = hash0 - hash1  # Finds the distance between the hashes of images
+    if hashDiff < cutoff:
+ print('These images are similar!')
