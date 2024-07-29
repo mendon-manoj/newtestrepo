@@ -1,0 +1,14 @@
+Create Folder in your C drive
+Open CMD or git hub.
+Cd your new created folder.
+git config --global user.name "Manoj Ganiga"
+git config --global user.email manoj.ganiga@nl.abnamro.com
+git config --system core.longpaths true
+
+git rm -r path to .files
+
+git clone https://C58896@p-bitbucket.nl.eu.abnamro.com:7999/scm/crmt/tags.git
+git add --all
+git commit -m "Initial Commit" (your comments)
+git push -u origin –all
+git push origin -tags
