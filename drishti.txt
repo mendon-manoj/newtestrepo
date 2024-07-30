@@ -39,3 +39,7 @@ def compareImages(cv2Img):
     hashDiff = hash0 - hash1  # Finds the distance between the hashes of images
     if hashDiff < cutoff:
  print('These images are similar!')
+-29/07/2024
+-use hamming distance to compare images
+-hamming code is zero would mean images are identical-retet
+- https://stackoverflow.com/questions/67275803/numpy-error-trying-to-use-difference-hashing-with-the-imagehash-library?newreg=658611f06637411c88dd9d75b6783c42
